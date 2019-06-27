@@ -22,20 +22,20 @@ int main()
     
     
     do{
-        if(x <= 0){
+        if(x <= 0){ // If user enter less than 0, this code will execute
             cout << "Please enter valid number! Greater than 0" << endl;
         }
         cout << "Please enter row number :";
         cin>> x;
-    }while(x <= 0);
+    }while(x <= 0); // Will keep loop if user enter less than 0
     
 	do{
-        if(y <= 0){
+        if(y <= 0){ // If user enter less than 0, this code will execute
             cout << "Please enter valid number! Greater than 0" << endl;
         }
         cout << "Please enter column number :";
         cin >> y;
-    }while(x <= 0);
+    }while(x <= 0); // Will keep loop if user enter less than 0
     
     userArray = new int*[x]; // Input x pointer space in userArray
     
