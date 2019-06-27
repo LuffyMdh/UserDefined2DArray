@@ -14,102 +14,113 @@ void transposeMatrix(int** userArray,int x,int y);
 
 int main()
 {
-	string errorMessage1 = "Please input elements into the array before proceed!";
-	int userChoice; //User choice variable
-	int x,y;
+	string errorMessage1 = "Please input elements into the array before proceed!"; // Store error message in string variable
+	int userChoice; // User choice variable
+	int x,y; // Variable for row and column based on user input
 	bool checkArray = 1; // Make sure user input elements into the array
-	int** userArray;
+	int** userArray; // Declare pointer to pointer integer type
     
     
-	cout << "Please enter row number : ";
-	cin >> x;
-	cout << "Please enter column number : ";
-	cin >> y;
+    do{
+        if(x <= 0){
+            cout << "Please enter valid number! Greater than 0" << endl;
+        }
+        cout << "Please enter row number :";
+        cin>> x;
+    }while(x <= 0);
     
-    userArray = new int*[x];
+	do{
+        if(y <= 0){
+            cout << "Please enter valid number! Greater than 0" << endl;
+        }
+        cout << "Please enter column number :";
+        cin >> y;
+    }while(x <= 0);
+    
+    userArray = new int*[x]; // Input x pointer space in userArray
     
     for(int i=0;i<x;i++)
     {
-        userArray[i] = new int[y];
+        userArray[i] = new int[y]; // Input y pointer space in every row in userArray
     }
 	
 	do{
-		showMenu(x,y);
-		cin >> userChoice;
+		showMenu(x,y); // Call function menu
+		cin >> userChoice; // User input choice
 		
-		switch(userChoice){
-			case 1:
-				inputArray(userArray,x,y);
+		switch(userChoice){ // Direct to case number based on userChoice variable
+			case 1: // If userChoice is 1
+				inputArray(userArray,x,y); // Call function inputArray
 				checkArray = 0;
 				break;
 
-			case 2:
+			case 2: // If userChoice is 1
 			if(checkArray){
 				cout << errorMessage1 << endl;
 				break;
 			}
 			else{
-				showMatrix(userArray,x,y);
+				showMatrix(userArray,x,y); // Call function showMatrix
 				break;
 			}
 				
-			case 3:
+			case 3: // If userChoice is 1
 			if(checkArray){
 				cout << errorMessage1 << endl;
 				break;
 			}
 			else{
-				matrixSum(userArray,x,y);
+				matrixSum(userArray,x,y); // Call function matrixSum
 				break;
 			}
 				
-			case 4:
+			case 4: // If userChoice is 1
 			if(checkArray){
 				cout << errorMessage1 << endl;
 				break;
 			}
 			else{
-				rowWiseSum(userArray,x,y);
+				rowWiseSum(userArray,x,y); // Call function rowWiseSum
 				break;
 			}
 				
-			case 5:
+			case 5: // If userChoice is 1
 			if(checkArray){
 				cout << errorMessage1 << endl;
 				break;
 			}
 			else{
-				colWiseSum(userArray,x,y);
+				colWiseSum(userArray,x,y); // Call function colWiseSum
 				break;
 			}
 				
-			case 6:
+			case 6: // If userChoice is 1
 			if(checkArray){
 				cout << errorMessage1 << endl;
 				break;
 			}
 			else{
-				transposeMatrix(userArray,x,y);
+				transposeMatrix(userArray,x,y); // Call function tranposeMatrix
 				break;
 			}
 				
-			case 7:
+			case 7: // If userChoice is 1
 				break;
 				
-			default:
+			default: // If userChoice is other than 1 - 7
 				cout << "You have entered an invalid option. Please choose options 1 to 7 only" << endl;
 				break;
 		}
-		system("pause");
-		system("cls");
-	}while(userChoice != 7);
+		system("pause"); // Pause the program
+		system("cls"); // Clear the program screen
+	}while(userChoice != 7); // Keep loop until userChoice is 7
 	
 	cout << "Thank you for using this program!" << endl;
 	
     for(int deleteRow=0;deleteRow<x;deleteRow++){
-        delete [] userArray[deleteRow];
+        delete [] userArray[deleteRow]; // Clear space memory in every row
     }
-    delete [] userArray;
+    delete [] userArray; // Clear remaining space
     
 	return 0;
 }
