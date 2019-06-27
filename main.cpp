@@ -24,25 +24,25 @@ int main()
     do{
         cout << "Please enter row number :";
         cin>> x;
-        if(x <= 0){ // If user enter less than 0, this code will execute
+        if(x <= 0){ // If user enters less than 0, this code will execute
             cout << "Please enter valid number! Greater than 0" << endl;
         }
-    }while(x <= 0); // Will keep loop if user enter less than 0
+    }while(x <= 0); // Will keep loop if user enters less than 0
     
 	do{
 
         cout << "Please enter column number :";
         cin >> y;
-        if(y <= 0){ // If user enter less than 0, this code will execute
+        if(y <= 0){ // If user enters less than 0, this code will execute
             cout << "Please enter valid number! Greater than 0" << endl;
         }
-    }while(x <= 0); // Will keep loop if user enter less than 0
+    }while(x <= 0); // Will keep loop if user enters less than 0
     
-    userArray = new int*[x]; // Input x pointer space in userArray
+    userArray = new int*[x]; // Allocates memory space based on X
     
     for(int i=0;i<x;i++)
     {
-        userArray[i] = new int[y]; // Input y pointer space in every row in userArray
+        userArray[i] = new int[y]; // Allocates memory space based on Y into X[i]
     }
 	
 	do{
@@ -55,7 +55,7 @@ int main()
 				checkArray = 0;
 				break;
 
-			case 2: // If userChoice is 1
+			case 2: // If userChoice is 2
 			if(checkArray){
 				cout << errorMessage1 << endl;
 				break;
@@ -65,7 +65,7 @@ int main()
 				break;
 			}
 				
-			case 3: // If userChoice is 1
+			case 3: // If userChoice is 3
 			if(checkArray){
 				cout << errorMessage1 << endl;
 				break;
@@ -75,7 +75,7 @@ int main()
 				break;
 			}
 				
-			case 4: // If userChoice is 1
+			case 4: // If userChoice is 4
 			if(checkArray){
 				cout << errorMessage1 << endl;
 				break;
@@ -85,7 +85,7 @@ int main()
 				break;
 			}
 				
-			case 5: // If userChoice is 1
+			case 5: // If userChoice is 5
 			if(checkArray){
 				cout << errorMessage1 << endl;
 				break;
@@ -95,7 +95,7 @@ int main()
 				break;
 			}
 				
-			case 6: // If userChoice is 1
+			case 6: // If userChoice is 6
 			if(checkArray){
 				cout << errorMessage1 << endl;
 				break;
@@ -105,7 +105,7 @@ int main()
 				break;
 			}
 				
-			case 7: // If userChoice is 1
+			case 7: // If userChoice is 7
 				break;
 				
 			default: // If userChoice is other than 1 - 7
@@ -119,9 +119,9 @@ int main()
 	cout << "Thank you for using this program!" << endl;
 	
     for(int deleteRow=0;deleteRow<x;deleteRow++){
-        delete [] userArray[deleteRow]; // Clear space memory in every row
+        delete [] userArray[deleteRow]; // Clear allocated space in memory (x)
     }
-    delete [] userArray; // Clear remaining space
+    delete [] userArray; // Clear remaining allocated space (y)
     
 	return 0;
 }
@@ -150,7 +150,7 @@ void inputArray(int** userArray,int x,int y){
 		for(int j=0;j<y;j++){
 			
 			cout << "[" << i << "][" << j << "]: ";
-			cin >> userArray[i][j];
+			cin >> userArray[i][j]; // Input elements into the array
 		}
 	}
 }
@@ -164,7 +164,7 @@ void showMatrix(int** userArray,int x,int y){
 		
 		for(int j=0;j<y;j++){
 			
-			cout << "[" << userArray[i][j] << "]";
+			cout << "[" << userArray[i][j] << "]"; // Display elements in the array
 		}
 		cout << endl;
 	}	
@@ -179,7 +179,7 @@ void matrixSum(int** userArray,int x,int y){
 		
 		for(int j=0;j<y;j++){
 			
-			sum = sum + userArray[i][j];
+			sum = sum + userArray[i][j]; // Store every elements sum up into variable sum
 		}
 	}
 	
@@ -240,7 +240,7 @@ void transposeMatrix(int** userArray,int x,int y)
 		
 		for(int j=0;j<x;j++){
 			
-			cout << "[" << userArray[j][i] << "]";
+			cout << "[" << userArray[j][i] << "]"; // Display transpose matrix 
 		}
 		cout << endl;
 	}
