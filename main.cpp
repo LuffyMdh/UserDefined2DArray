@@ -40,8 +40,7 @@ int main()
     
     userArray = new int*[x]; // Allocates memory space based on X
     
-    for(int i=0;i<x;i++)
-    {
+    for(int i=0;i<x;i++){
         userArray[i] = new int[y]; // Allocates memory space based on Y into X[i]
     }
 	
@@ -146,9 +145,7 @@ void showMenu(int x,int y){
 void inputArray(int** userArray,int x,int y){
 	
 	for(int i=0;i<x;i++){
-		
 		for(int j=0;j<y;j++){
-			
 			cout << "[" << i << "][" << j << "]: ";
 			cin >> userArray[i][j]; // Input elements into the array
 		}
@@ -161,9 +158,7 @@ void showMatrix(int** userArray,int x,int y){
 	
 	//bool checkArray(x,y);
 	for(int i=0;i<x;i++){
-		
 		for(int j=0;j<y;j++){
-			
 			cout << "[" << userArray[i][j] << "]"; // Display elements in the array
 		}
 		cout << endl;
@@ -176,9 +171,7 @@ void matrixSum(int** userArray,int x,int y){
 	int sum = 0;
 	
 	for(int i=0;i<x;i++){
-		
 		for(int j=0;j<y;j++){
-			
 			sum = sum + userArray[i][j]; // Store every elements sum up into variable sum
 		}
 	}
@@ -192,17 +185,14 @@ void rowWiseSum(int** userArray,int x,int y){
 	int sum = 0;
 	
 	for(int i=0;i<x;i++){
-		
 		sum = 0;
 		for(int j=0;j<y;j++){
-			
 			cout << "[" << userArray[i][j] << "]";
 		}
 		cout << endl;
 	}
 	
 	for(int i=0;i<x;i++){
-		
 		sum = 0;
 		for(int j=0;j<y;j++){
 			sum = sum + userArray[i][j];
@@ -237,9 +227,7 @@ void colWiseSum(int** userArray,int x,int y){
 void transposeMatrix(int** userArray,int x,int y)
 {
 	for(int i=0;i<y;i++){
-		
 		for(int j=0;j<x;j++){
-			
 			cout << "[" << userArray[j][i] << "]"; // Display transpose matrix 
 		}
 		cout << endl;
