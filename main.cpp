@@ -22,22 +22,27 @@ int main()
     
     
     do{
-        cout << "Please enter row number :";
+        cout << "Please enter row number: ";
         cin>> x;
         if(x <= 0){ // If user enters less than 0, this code will execute
             cout << "Please enter valid number! Greater than 0" << endl;
         }
     }while(x <= 0); // Will keep loop if user enters less than 0
+	
+	cout << "Row number is " << x << endl;
     
 	do{
 
-        cout << "Please enter column number :";
+        cout << "Please enter column number: ";
         cin >> y;
         if(y <= 0){ // If user enters less than 0, this code will execute
             cout << "Please enter valid number! Greater than 0" << endl;
         }
-    }while(x <= 0); // Will keep loop if user enters less than 0
+    }while(y <= 0); // Will keep loop if user enters less than 0
     
+	cout << "Column number is " << y << endl;
+	system("pause"); // Pause the program
+
     userArray = new int*[x]; // Allocates memory space based on X
     
     for(int i=0;i<x;i++){
@@ -105,17 +110,20 @@ int main()
 			}
 				
 			case 7: // If userChoice is 7
+				goto quitProgram;
 				break;
 				
 			default: // If userChoice is other than 1 - 7
 				cout << "You have entered an invalid option. Please choose options 1 to 7 only" << endl;
 				break;
 		}
-		system("pause"); // Pause the program
+		system("pause");
 		system("cls"); // Clear the program screen
 	}while(userChoice != 7); // Keep loop until userChoice is 7
 	
-	cout << "Thank you for using this program!" << endl;
+	quitProgram:
+		system("cls");
+		cout << "Thank you for using this program" << endl;
 	
     for(int deleteRow=0;deleteRow<x;deleteRow++){
         delete [] userArray[deleteRow]; // Clear allocated space in memory (x)
