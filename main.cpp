@@ -3,7 +3,6 @@
 #include <string>
 
 using namespace std;
-
 void showMenu(int x,int y);
 void inputArray(int** userArray,int x,int y);
 void showMatrix(int** userArray,int x,int y);
@@ -12,39 +11,32 @@ void rowWiseSum(int** userArray,int x,int y);
 void colWiseSum(int** userArray,int x,int y);
 void transposeMatrix(int** userArray,int x,int y);
 
-int main()
-{
+int main(){
 	string errorMessage1 = "Please input elements into the array before proceed!"; // Store error message in string variable
 	int userChoice; // User choice variable
 	int x,y; // Variable for row and column based on user input
 	bool checkArray = 1; // Make sure user input elements into the array
 	int** userArray; // Declare pointer to pointer integer type
-    
-    
+	
     do{
-        cout << "Please enter row number: ";
+        cout << "Please enter row number :";
         cin>> x;
         if(x <= 0){ // If user enters less than 0, this code will execute
             cout << "Please enter valid number! Greater than 0" << endl;
         }
     }while(x <= 0); // Will keep loop if user enters less than 0
 	
-	cout << "Row number is " << x << endl;
-    
 	do{
-
-        cout << "Please enter column number: ";
+        cout << "Please enter column number :";
         cin >> y;
         if(y <= 0){ // If user enters less than 0, this code will execute
             cout << "Please enter valid number! Greater than 0" << endl;
         }
-    }while(y <= 0); // Will keep loop if user enters less than 0
-    
-	cout << "Column number is " << y << endl;
-	system("pause"); // Pause the program
-
+    }while(x <= 0); // Will keep loop if user enters less than 0
+	
     userArray = new int*[x]; // Allocates memory space based on X
-    
+	
+	
     for(int i=0;i<x;i++){
         userArray[i] = new int[y]; // Allocates memory space based on Y into X[i]
     }
@@ -52,13 +44,11 @@ int main()
 	do{
 		showMenu(x,y); // Call function menu
 		cin >> userChoice; // User input choice
-		
 		switch(userChoice){ // Direct to case number based on userChoice variable
 			case 1: // If userChoice is 1
 				inputArray(userArray,x,y); // Call function inputArray
 				checkArray = 0;
 				break;
-
 			case 2: // If userChoice is 2
 			if(checkArray){
 				cout << errorMessage1 << endl;
@@ -68,7 +58,6 @@ int main()
 				showMatrix(userArray,x,y); // Call function showMatrix
 				break;
 			}
-				
 			case 3: // If userChoice is 3
 			if(checkArray){
 				cout << errorMessage1 << endl;
@@ -78,7 +67,6 @@ int main()
 				matrixSum(userArray,x,y); // Call function matrixSum
 				break;
 			}
-				
 			case 4: // If userChoice is 4
 			if(checkArray){
 				cout << errorMessage1 << endl;
@@ -88,7 +76,6 @@ int main()
 				rowWiseSum(userArray,x,y); // Call function rowWiseSum
 				break;
 			}
-				
 			case 5: // If userChoice is 5
 			if(checkArray){
 				cout << errorMessage1 << endl;
@@ -98,7 +85,6 @@ int main()
 				colWiseSum(userArray,x,y); // Call function colWiseSum
 				break;
 			}
-				
 			case 6: // If userChoice is 6
 			if(checkArray){
 				cout << errorMessage1 << endl;
@@ -108,22 +94,16 @@ int main()
 				transposeMatrix(userArray,x,y); // Call function tranposeMatrix
 				break;
 			}
-				
 			case 7: // If userChoice is 7
-				goto quitProgram;
 				break;
-				
 			default: // If userChoice is other than 1 - 7
 				cout << "You have entered an invalid option. Please choose options 1 to 7 only" << endl;
-				break;
+			break;
 		}
-		system("pause");
+		system("pause"); // Pause the program
 		system("cls"); // Clear the program screen
-	}while(userChoice != 7); // Keep loop until userChoice is 7
-	
-	quitProgram:
-		system("cls");
-		cout << "Thank you for using this program" << endl;
+	}while(userChoice != 7); // Keep loop until userChoce is 7
+	cout << "Thank you for using this program!" << endl;
 	
     for(int deleteRow=0;deleteRow<x;deleteRow++){
         delete [] userArray[deleteRow]; // Clear allocated space in memory (x)
@@ -131,12 +111,10 @@ int main()
     delete [] userArray; // Clear remaining allocated space (y)
     
 	return 0;
+
 }
-
-
 //Show menu function
 void showMenu(int x,int y){
-	
 	system("cls");
 	cout << "1. Input elements into matrix of size " << x << " x " <<  y << endl;
 	cout << "2. To display elements of matrix of size " << x << " x " <<  y << endl;
@@ -171,6 +149,7 @@ void showMatrix(int** userArray,int x,int y){
 		}
 		cout << endl;
 	}	
+
 }
 
 // Sum of matrix function
@@ -183,7 +162,7 @@ void matrixSum(int** userArray,int x,int y){
 			sum = sum + userArray[i][j]; // Store every elements sum up into variable sum
 		}
 	}
-	
+
 	cout << "Sum of all elements of the matrix is " << sum << endl;
 }
 
@@ -213,7 +192,7 @@ void rowWiseSum(int** userArray,int x,int y){
 void colWiseSum(int** userArray,int x,int y){
 	
 	int sum = 0;
-	
+	int colNum = 1;
 	for(int i=0;i<x;i++){
 		for(int j=0;j<y;j++){
 			cout << "[" << userArray[i][j] << "]";
@@ -221,16 +200,16 @@ void colWiseSum(int** userArray,int x,int y){
 		cout << endl;
 	}
 	
-	for(int i=0;i<x;i++){
+	for(int j=0;j<y;j++){
 		sum = 0;
-		int j;
-		for(j=0;j<y;j++){
-			sum = sum + userArray[j][i];
+		int i;
+		for(i=0;i<x;i++){
+			sum = sum + userArray[i][j];
 		}
-		cout << "Sum of column " << i+1 << " is " << sum << endl;
+		cout << "Sum of column " << colNum << " is " << sum << endl;
+		colNum++;
 	}
 }
-
 //Transpose matrix function
 void transposeMatrix(int** userArray,int x,int y)
 {
